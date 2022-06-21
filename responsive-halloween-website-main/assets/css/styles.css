@@ -51,6 +51,20 @@
   --z-fixed: 100;
 }
 
+[data-theme="dark"] {
+  --first-color:rgb(71, 71, 71);
+  --first-color-alt: rgba(50, 252, 36, 0.933);
+  --title-color:  rgba(50, 252, 36, 0.933);
+  --text-color:  rgba(50, 252, 36, 0.933);
+  --nav-link-color: rgba(50, 252, 36, 0.933);
+  --text-color-light:  rgba(50, 252, 36, 0.933);
+  --social-link-hover-color:#393938 ;
+  --link-border-color:#123;
+
+  /*Green gradient*/
+  --body-color:#222;
+  --container-color:#2e2e2d;
+}
 /* Responsive typography */
 @media screen and (min-width: 992px) {
   :root {
@@ -61,6 +75,7 @@
     --normal-font-size: 1rem;
     --small-font-size: .875rem;
     --smaller-font-size: .813rem;
+    --scroll-header:rgba(255, 255, 255, 0.2);
   }
 }
 
@@ -81,6 +96,7 @@ body{
   font-size: var(--normal-font-size);
   background: var(--body-color);
   color: var(--text-color);
+   
 }
 
 h1,h2,h3,h4{
@@ -138,6 +154,66 @@ button{
 .main{
   overflow: hidden; /*For animation*/
 }
+/* =============dark mode slider================ */
+
+/*slider switch css */
+.theme-switch-wrapper {
+  display: flex;
+  align-items: center;
+
+}
+.theme-switch 
+{
+  display: inline-block;
+  height: 34px;
+  position: relative;
+  width: 60px;
+}
+
+.theme-switch input {
+  display:none;
+  border: 0px;
+}
+input[type="checkbox"]:focus,input[type="checkbox"]:hover{
+  outline:none;
+}
+
+
+.slider {
+  background-color: rgb(0, 0, 0);
+  inset:0;
+  cursor: pointer;
+  position: absolute;
+  transition: .4s;
+}
+
+.slider:before {
+  background-color: rgb(255, 251, 251);
+  bottom: 4px;
+  content: "";
+  height: 26px;
+  left: 4px;
+  position: absolute;
+  transition: .4s;
+  width: 26px;
+}
+
+input:checked + .slider {
+  background-color: #ffffff;
+}
+
+input:checked + .slider:before {
+  background-color: #000000;
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
 
 /*=============== HEADER ===============*/
 .header{
@@ -191,7 +267,7 @@ button{
     position: fixed;
     width: 100%;
     background: var(--container-color);
-    top: -150%;
+    top: -900%;
     left: 0;
     padding: 3.5rem 0;
     transition: .4s;
@@ -238,8 +314,8 @@ button{
 }
 
 /* Change background header */
-.scroll-header{
-  background: rgba(255, 255, 255, 0.2);
+.header{
+  background: var(--scroll-header);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
@@ -427,6 +503,7 @@ button{
 /*=============== ABOUT ===============*/
 .about__container{
   row-gap: 2rem;
+ 
 }
 
 .about__data{
